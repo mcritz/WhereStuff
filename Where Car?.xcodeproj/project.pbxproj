@@ -22,6 +22,7 @@
 		0F85FD4E18DC8F2D002A9D5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2D18DC8F2D002A9D5A /* UIKit.framework */; };
 		0F85FD5618DC8F2D002A9D5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F85FD5418DC8F2D002A9D5A /* InfoPlist.strings */; };
 		0F85FD5818DC8F2D002A9D5A /* Where_Car_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85FD5718DC8F2D002A9D5A /* Where_Car_Tests.m */; };
+		0F85FD6218DC9309002A9D5A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD6118DC9309002A9D5A /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0F85FD5318DC8F2D002A9D5A /* Where Car?Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Where Car?Tests-Info.plist"; sourceTree = "<group>"; };
 		0F85FD5518DC8F2D002A9D5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0F85FD5718DC8F2D002A9D5A /* Where_Car_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Where_Car_Tests.m; sourceTree = "<group>"; };
+		0F85FD6118DC9309002A9D5A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F85FD6218DC9309002A9D5A /* MapKit.framework in Frameworks */,
 				0F85FD2C18DC8F2D002A9D5A /* CoreGraphics.framework in Frameworks */,
 				0F85FD2E18DC8F2D002A9D5A /* UIKit.framework in Frameworks */,
 				0F85FD2A18DC8F2D002A9D5A /* Foundation.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		0F85FD2818DC8F2D002A9D5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F85FD6118DC9309002A9D5A /* MapKit.framework */,
 				0F85FD2918DC8F2D002A9D5A /* Foundation.framework */,
 				0F85FD2B18DC8F2D002A9D5A /* CoreGraphics.framework */,
 				0F85FD2D18DC8F2D002A9D5A /* UIKit.framework */,

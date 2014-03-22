@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface CAR_ViewController : UIViewController
+@interface CAR_ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+
+// CL
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet MKMapView *bigMap;
 
 @end
