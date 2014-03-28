@@ -16,12 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IYW-oo-5II">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYW-oo-5II">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="IYW-oo-5II" secondAttribute="width" id="M8e-0a-BuM"/>
+                            <constraint firstAttribute="centerY" secondItem="IYW-oo-5II" secondAttribute="centerY" id="WPR-Ev-pXm"/>
+                            <constraint firstAttribute="centerX" secondItem="IYW-oo-5II" secondAttribute="centerX" id="kO4-vH-eCN"/>
+                            <constraint firstAttribute="height" secondItem="IYW-oo-5II" secondAttribute="height" id="yYE-HB-tyK"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="bigMap" destination="IYW-oo-5II" id="o3n-oY-JQq"/>

@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "CAR_BeaconController.h"
+#import "CAR_BeaconAnnotation.h"
 
-@interface CAR_ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+@protocol CAR_ViewController <NSObject>
 
-// CL
-@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
-@property (strong, nonatomic) CLLocationManager *locationManager;
+- (void)addAnnotation:(CAR_BeaconAnnotation *)beaconAnnotation;
+
+@end
+
+@interface CAR_ViewController : UIViewController <MKMapViewDelegate>
+
 @property (weak, nonatomic) IBOutlet MKMapView *bigMap;
+@property (nonatomic)CAR_BeaconController *beaconController;
 
 @end

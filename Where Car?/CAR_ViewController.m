@@ -7,71 +7,61 @@
 //
 
 #import "CAR_ViewController.h"
+#import "CAR_BeaconController.h"
+#import "CAR_BeaconAnnotation.h"
 
 @interface CAR_ViewController ()
-
-@property (nonatomic, strong)CLBeacon *beacon;
 
 @end
 
 @implementation CAR_ViewController
 
+@synthesize beaconController = _beaconController;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self listenForBeacons];
+    [self.bigMap setDelegate:self];
 }
 
-- (void)didReceiveMemoryWarning
+- (CAR_BeaconController *)beaconController {
+    if (!_beaconController) {
+        _beaconController = [[CAR_BeaconController alloc] init];
+    }
+    return _beaconController;
+}
+
+- (void)listenForBeacons {
+    [self.beaconController addObserver:self
+                            forKeyPath:@"deviceLocation"
+                               options:NSKeyValueObservingOptionNew
+                               context:NULL];
+//    [self.beaconController addObserver:self
+//                            forKeyPath:@"deviceLocation"
+//                               options:NSKeyValueObservingOptionNew
+//                               context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-// CL
-- (CLLocationManager *)locationManager {
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
+    if ([keyPath isEqualToString:@"beaconLocation"]) {
+        NSLog(@"what what!??");
     }
-    return _locationManager;
+    return;
 }
 
-- (CLBeaconRegion *)beaconRegion {
-    if (!_beaconRegion) {
-        // TODO: not shitty hardcoded beacon
-        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"8AEFB031-6C32-486F-825B-E26FA193487D"];
-        _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"com.MapOfTheUnexplored.WhereCar"];
-    }
-    return _beaconRegion;
+- (void)handleAnnotationNotice {
+    CAR_BeaconAnnotation *newBeaconAnnotation = [[CAR_BeaconAnnotation alloc] init];
+    [newBeaconAnnotation setLocation:self.beaconController.deviceLocation];
+    [self addAnnotation:newBeaconAnnotation];
 }
 
-- (void)initRegion {
-    [self.locationManager startMonitoringForRegion:self.beaconRegion];
+- (void)addAnnotation:(CAR_BeaconAnnotation *)beaconAnnotation {
+    [self.bigMap addAnnotation:beaconAnnotation];
 }
-
-- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
-    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
-}
-
--(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
-    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
-}
-
--(void)locationManager:(CLLocationManager *)manager
-       didRangeBeacons:(NSArray *)beacons
-              inRegion:(CLBeaconRegion *)region {
-    self.beacon = [beacons lastObject];
-    if (self.beacon.proximity == CLProximityUnknown) {
-        NSLog(@"Dude, where's my car?");
-    } else if (self.beacon.proximity == CLProximityImmediate) {
-        NSLog(@"Dude, THERE'S your car!");
-    } else if (self.beacon.proximity == CLProximityNear) {
-        NSLog(@"Dude, it's right there!");
-    } else if (self.beacon.proximity == CLProximityFar) {
-        NSLog(@"Dude, your car is far.");
-    }
-}
-
 
 @end

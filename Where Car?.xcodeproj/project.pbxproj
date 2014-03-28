@@ -23,6 +23,9 @@
 		0F85FD5618DC8F2D002A9D5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F85FD5418DC8F2D002A9D5A /* InfoPlist.strings */; };
 		0F85FD5818DC8F2D002A9D5A /* Where_Car_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85FD5718DC8F2D002A9D5A /* Where_Car_Tests.m */; };
 		0F85FD6218DC9309002A9D5A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD6118DC9309002A9D5A /* MapKit.framework */; };
+		0F85FD6718DDED78002A9D5A /* CAR_BeaconController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85FD6618DDED78002A9D5A /* CAR_BeaconController.m */; };
+		0F85FD6B18DF5013002A9D5A /* CAR_BeaconAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85FD6A18DF5013002A9D5A /* CAR_BeaconAnnotation.m */; };
+		0F85FD6F18E07CA3002A9D5A /* CAR_ViewController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85FD6E18E07CA3002A9D5A /* CAR_ViewController_Tests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,11 @@
 		0F85FD5518DC8F2D002A9D5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0F85FD5718DC8F2D002A9D5A /* Where_Car_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Where_Car_Tests.m; sourceTree = "<group>"; };
 		0F85FD6118DC9309002A9D5A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0F85FD6518DDED78002A9D5A /* CAR_BeaconController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_BeaconController.h; sourceTree = "<group>"; };
+		0F85FD6618DDED78002A9D5A /* CAR_BeaconController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_BeaconController.m; sourceTree = "<group>"; };
+		0F85FD6918DF5013002A9D5A /* CAR_BeaconAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_BeaconAnnotation.h; sourceTree = "<group>"; };
+		0F85FD6A18DF5013002A9D5A /* CAR_BeaconAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_BeaconAnnotation.m; sourceTree = "<group>"; };
+		0F85FD6E18E07CA3002A9D5A /* CAR_ViewController_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_ViewController_Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,12 +126,9 @@
 		0F85FD2F18DC8F2D002A9D5A /* Where Car? */ = {
 			isa = PBXGroup;
 			children = (
-				0F85FD3818DC8F2D002A9D5A /* CAR_AppDelegate.h */,
-				0F85FD3918DC8F2D002A9D5A /* CAR_AppDelegate.m */,
-				0F85FD3B18DC8F2D002A9D5A /* Main_iPhone.storyboard */,
-				0F85FD3E18DC8F2D002A9D5A /* Main_iPad.storyboard */,
-				0F85FD4118DC8F2D002A9D5A /* CAR_ViewController.h */,
-				0F85FD4218DC8F2D002A9D5A /* CAR_ViewController.m */,
+				0F85FD6C18DF501C002A9D5A /* Models */,
+				0F85FD6D18DF5049002A9D5A /* Views */,
+				0F85FD6818DDED82002A9D5A /* Controllers */,
 				0F85FD4418DC8F2D002A9D5A /* Images.xcassets */,
 				0F85FD3018DC8F2D002A9D5A /* Supporting Files */,
 			);
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				0F85FD5718DC8F2D002A9D5A /* Where_Car_Tests.m */,
+				0F85FD6E18E07CA3002A9D5A /* CAR_ViewController_Tests.m */,
 				0F85FD5218DC8F2D002A9D5A /* Supporting Files */,
 			);
 			path = "Where Car?Tests";
@@ -157,6 +163,37 @@
 				0F85FD5418DC8F2D002A9D5A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0F85FD6818DDED82002A9D5A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F85FD3818DC8F2D002A9D5A /* CAR_AppDelegate.h */,
+				0F85FD3918DC8F2D002A9D5A /* CAR_AppDelegate.m */,
+				0F85FD4118DC8F2D002A9D5A /* CAR_ViewController.h */,
+				0F85FD4218DC8F2D002A9D5A /* CAR_ViewController.m */,
+				0F85FD6518DDED78002A9D5A /* CAR_BeaconController.h */,
+				0F85FD6618DDED78002A9D5A /* CAR_BeaconController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0F85FD6C18DF501C002A9D5A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F85FD6918DF5013002A9D5A /* CAR_BeaconAnnotation.h */,
+				0F85FD6A18DF5013002A9D5A /* CAR_BeaconAnnotation.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0F85FD6D18DF5049002A9D5A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F85FD3B18DC8F2D002A9D5A /* Main_iPhone.storyboard */,
+				0F85FD3E18DC8F2D002A9D5A /* Main_iPad.storyboard */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F85FD6B18DF5013002A9D5A /* CAR_BeaconAnnotation.m in Sources */,
 				0F85FD3618DC8F2D002A9D5A /* main.m in Sources */,
 				0F85FD3A18DC8F2D002A9D5A /* CAR_AppDelegate.m in Sources */,
+				0F85FD6718DDED78002A9D5A /* CAR_BeaconController.m in Sources */,
 				0F85FD4318DC8F2D002A9D5A /* CAR_ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F85FD5818DC8F2D002A9D5A /* Where_Car_Tests.m in Sources */,
+				0F85FD6F18E07CA3002A9D5A /* CAR_ViewController_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
