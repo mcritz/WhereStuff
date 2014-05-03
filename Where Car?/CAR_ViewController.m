@@ -46,11 +46,17 @@
 		_locationManager = [[CLLocationManager alloc] init];
 		// TODO: probably not this
 		[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+		[_locationManager setPausesLocationUpdatesAutomatically:YES];
+		
+		// 'CLActivityTypeFitness' is defined as 'pedestrian activity'.
+		// We assume the user is walking away from a desired object.
+		[_locationManager setActivityType:CLActivityTypeFitness];
 	}
 	return _locationManager;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+	NSLog(@"Location update");
 }
 
 - (MKPointAnnotation *)carAnnotation {
@@ -110,6 +116,15 @@
     } else if (beaconToRange.proximity == CLProximityFar) {
         [self.statusLabel setText:@"Dude, your car is far."];
     }
+	[self updateLocationAccuracy];
+}
+
+- (void)updateLocationAccuracy {
+	if (!self.view.isHidden) {
+		[self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+	} else {
+		[self.locationManager setDesiredAccuracy:kCLLocationAccuracyKilometer];
+	}
 }
 
 - (void)updateLastSeen {
@@ -121,7 +136,6 @@
 	}
 	[self.bigMap addAnnotation:self.carAnnotation];
 }
-
 
 - (IBAction)logButtonPressed:(id)sender {
 	NSString *logMessage = @"updateLastSeen";
