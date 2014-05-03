@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -16,19 +16,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IYW-oo-5II">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYW-oo-5II">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpl-uf-SUD">
+                                <rect key="frame" x="0.0" y="455" width="320" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="VNr-V6-stq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rQ-yv-4VE">
+                                <rect key="frame" x="0.0" y="518" width="320" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.84999999999999998" colorSpace="deviceWhite"/>
+                                <state key="normal" title="Log Something">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="e6Q-Vu-meO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6rQ-yv-4VE" firstAttribute="top" secondItem="IYW-oo-5II" secondAttribute="bottom" constant="-50" id="1fJ-Nr-HnM"/>
+                            <constraint firstAttribute="width" secondItem="cpl-uf-SUD" secondAttribute="width" id="8dw-GQ-WAp"/>
+                            <constraint firstAttribute="centerY" secondItem="IYW-oo-5II" secondAttribute="centerY" id="BAT-Gt-xMP"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6rQ-yv-4VE" secondAttribute="bottom" constant="20" id="Bg2-bO-k3R"/>
+                            <constraint firstItem="6rQ-yv-4VE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="KO2-YH-fpf"/>
+                            <constraint firstItem="cpl-uf-SUD" firstAttribute="leading" secondItem="IYW-oo-5II" secondAttribute="leading" id="MRZ-5n-8yg"/>
+                            <constraint firstItem="IYW-oo-5II" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="XRO-Jl-3V7"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cpl-uf-SUD" secondAttribute="bottom" constant="77" id="Xes-TP-r6y"/>
+                            <constraint firstItem="IYW-oo-5II" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="YFi-yF-3I2"/>
+                            <constraint firstAttribute="trailing" secondItem="6rQ-yv-4VE" secondAttribute="trailing" id="ccx-EF-Ujv"/>
+                            <constraint firstItem="cpl-uf-SUD" firstAttribute="top" secondItem="IYW-oo-5II" secondAttribute="bottom" constant="-113" id="hT7-yQ-Btg"/>
+                            <constraint firstItem="6rQ-yv-4VE" firstAttribute="centerX" secondItem="IYW-oo-5II" secondAttribute="centerX" id="j3Y-p4-5Ek"/>
+                            <constraint firstAttribute="centerX" secondItem="IYW-oo-5II" secondAttribute="centerX" id="kwv-4K-Yw6"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="bigMap" destination="IYW-oo-5II" id="o3n-oY-JQq"/>
+                        <outlet property="statusLabel" destination="cpl-uf-SUD" id="GJW-M0-Any"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="47" y="30"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

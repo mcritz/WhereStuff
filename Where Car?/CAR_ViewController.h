@@ -13,8 +13,8 @@
 @interface CAR_ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
 // CL
-@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *bigMap;
-
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+- (IBAction)logButtonPressed:(id)sender;
 @end

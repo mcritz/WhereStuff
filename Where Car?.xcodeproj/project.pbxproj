@@ -49,7 +49,7 @@
 		0F85FD3C18DC8F2D002A9D5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0F85FD3F18DC8F2D002A9D5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		0F85FD4118DC8F2D002A9D5A /* CAR_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAR_ViewController.h; sourceTree = "<group>"; };
-		0F85FD4218DC8F2D002A9D5A /* CAR_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAR_ViewController.m; sourceTree = "<group>"; };
+		0F85FD4218DC8F2D002A9D5A /* CAR_ViewController.m */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_ViewController.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		0F85FD4418DC8F2D002A9D5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0F85FD4A18DC8F2D002A9D5A /* Where Car?Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Where Car?Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F85FD4B18DC8F2D002A9D5A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -475,6 +475,7 @@
 				0F85FD5D18DC8F2D002A9D5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F85FD5E18DC8F2D002A9D5A /* Build configuration list for PBXNativeTarget "Where Car?Tests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +484,7 @@
 				0F85FD6018DC8F2D002A9D5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
