@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@interface CAR_ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface CAR_ViewController : UIViewController <MKMapViewDelegate>
 
-// CL
-@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *bigMap;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 - (IBAction)logButtonPressed:(id)sender;
+
 @end

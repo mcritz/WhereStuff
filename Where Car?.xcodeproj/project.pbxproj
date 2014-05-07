@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F5B9787191695A700C39256 /* CAR_LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9786191695A700C39256 /* CAR_LocationController.m */; };
+		0F5B978A191695C100C39256 /* CAR_LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9789191695C100C39256 /* CAR_LocationModel.m */; };
 		0F85FD2A18DC8F2D002A9D5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2918DC8F2D002A9D5A /* Foundation.framework */; };
 		0F85FD2C18DC8F2D002A9D5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2B18DC8F2D002A9D5A /* CoreGraphics.framework */; };
 		0F85FD2E18DC8F2D002A9D5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2D18DC8F2D002A9D5A /* UIKit.framework */; };
@@ -36,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F5B9785191695A700C39256 /* CAR_LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_LocationController.h; sourceTree = "<group>"; };
+		0F5B9786191695A700C39256 /* CAR_LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_LocationController.m; sourceTree = "<group>"; };
+		0F5B9788191695C100C39256 /* CAR_LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_LocationModel.h; sourceTree = "<group>"; };
+		0F5B9789191695C100C39256 /* CAR_LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_LocationModel.m; sourceTree = "<group>"; };
 		0F85FD2618DC8F2D002A9D5A /* Where Car?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Where Car?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F85FD2918DC8F2D002A9D5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0F85FD2B18DC8F2D002A9D5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +124,10 @@
 		0F85FD2F18DC8F2D002A9D5A /* Where Car? */ = {
 			isa = PBXGroup;
 			children = (
+				0F5B9788191695C100C39256 /* CAR_LocationModel.h */,
+				0F5B9789191695C100C39256 /* CAR_LocationModel.m */,
+				0F5B9785191695A700C39256 /* CAR_LocationController.h */,
+				0F5B9786191695A700C39256 /* CAR_LocationController.m */,
 				0F85FD3818DC8F2D002A9D5A /* CAR_AppDelegate.h */,
 				0F85FD3918DC8F2D002A9D5A /* CAR_AppDelegate.m */,
 				0F85FD3B18DC8F2D002A9D5A /* Main_iPhone.storyboard */,
@@ -259,7 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F85FD3618DC8F2D002A9D5A /* main.m in Sources */,
+				0F5B9787191695A700C39256 /* CAR_LocationController.m in Sources */,
 				0F85FD3A18DC8F2D002A9D5A /* CAR_AppDelegate.m in Sources */,
+				0F5B978A191695C100C39256 /* CAR_LocationModel.m in Sources */,
 				0F85FD4318DC8F2D002A9D5A /* CAR_ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
