@@ -20,13 +20,14 @@
 
 - (CAR_LocationController *)init {
 	self = [super init];
-	[self checkCLAuthorization];
+	[self initLocationManager];
 	return self;
 }
 
-- (CLLocationManager *)locationManager {
+- (void)initLocationManager {
 	if (!_locationManager) {
 		_locationManager = [[CLLocationManager alloc] init];
+		[_locationManager setDelegate:self];
 		// TODO: probably not this
 		[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 		[_locationManager setPausesLocationUpdatesAutomatically:YES];
@@ -35,19 +36,8 @@
 		// We assume the user is walking away from a desired object.
 		[_locationManager setActivityType:CLActivityTypeFitness];
 	}
-	return _locationManager;
-}
-
-- (void)checkCLAuthorization {
-	if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
-		NSLog(@"Hola! CL is authorized");
-		[self.locationManager setDelegate:self];
-		[self.locationManager startUpdatingLocation];
-		[self initBeacon];
-	} else {
-		// TODO: Better UX
-		NSLog(@"Oh, fucksocks. CL is not authorized");
-	}
+	[self checkCLAuthorization];
+	[self initBeacon];
 }
 
 - (void)initBeacon {
@@ -60,8 +50,27 @@
 	// Qualcom	E30F2707-DB66-46DF-A504-215C396990CA
 	NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"E30F2707-DB66-46DF-A504-215C396990CA"];
 	self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
+																major:1
 														   identifier:@"com.mapoftheunexplored.car"];
 	[self.locationManager startMonitoringForRegion:self.beaconRegion];
+}
+
+
+- (void)checkCLAuthorization {
+	if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+		NSLog(@"Hola! CL is authorized");
+		[self.locationManager startUpdatingLocation];
+	} else {
+		// TODO: Better UX
+		NSLog(@"Oh, fucksocks. CL is not authorized");
+	}
+}
+
+- (CLLocation *)deviceLocation {
+	if (!_deviceLocation) {
+		_deviceLocation = self.locationManager.location;
+	}
+	return _deviceLocation;
 }
 
 - (CAR_LocationModel *)beaconLocation {
@@ -103,11 +112,22 @@
 	[self attemptToConserveBattery:shouldConservePower];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
+	NSLog(@"CLLM didDetermineState");
+	if ([region isKindOfClass:[CLBeaconRegion class]]) {
+		[self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+	NSLog(@"monitoring failed!");
+}
+
 #pragma mark - Utility methods
 
-- (void)updateBeaconLocation {
-	[self.beaconLocation setLocation:self.locationManager.location];
-}
+//- (void)updateBeaconLocation {
+//	[self.beaconLocation setLocation:self.locationManager.location];
+//}
 
 // Attempt to conserve energy
 - (void)attemptToConserveBattery:(BOOL)conserve {
