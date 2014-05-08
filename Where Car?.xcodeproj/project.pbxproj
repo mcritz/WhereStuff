@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F5B9787191695A700C39256 /* CAR_LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9786191695A700C39256 /* CAR_LocationController.m */; };
 		0F5B978A191695C100C39256 /* CAR_LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9789191695C100C39256 /* CAR_LocationModel.m */; };
+		0F7DD1D0191BF862002E7CA3 /* CAR_MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */; };
 		0F85FD2A18DC8F2D002A9D5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2918DC8F2D002A9D5A /* Foundation.framework */; };
 		0F85FD2C18DC8F2D002A9D5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2B18DC8F2D002A9D5A /* CoreGraphics.framework */; };
 		0F85FD2E18DC8F2D002A9D5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2D18DC8F2D002A9D5A /* UIKit.framework */; };
@@ -42,6 +43,8 @@
 		0F5B9786191695A700C39256 /* CAR_LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_LocationController.m; sourceTree = "<group>"; };
 		0F5B9788191695C100C39256 /* CAR_LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_LocationModel.h; sourceTree = "<group>"; };
 		0F5B9789191695C100C39256 /* CAR_LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_LocationModel.m; sourceTree = "<group>"; };
+		0F7DD1CE191BF862002E7CA3 /* CAR_MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_MapAnnotation.h; sourceTree = "<group>"; };
+		0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_MapAnnotation.m; sourceTree = "<group>"; };
 		0F85FD2618DC8F2D002A9D5A /* Where Car?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Where Car?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F85FD2918DC8F2D002A9D5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0F85FD2B18DC8F2D002A9D5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,8 @@
 		0F85FD2F18DC8F2D002A9D5A /* Where Car? */ = {
 			isa = PBXGroup;
 			children = (
+				0F7DD1CE191BF862002E7CA3 /* CAR_MapAnnotation.h */,
+				0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */,
 				0F5B9788191695C100C39256 /* CAR_LocationModel.h */,
 				0F5B9789191695C100C39256 /* CAR_LocationModel.m */,
 				0F5B9785191695A700C39256 /* CAR_LocationController.h */,
@@ -217,6 +222,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Map of the Unexplored";
 				TargetAttributes = {
+					0F85FD2518DC8F2D002A9D5A = {
+						DevelopmentTeam = UB37VMGP6E;
+					};
 					0F85FD4918DC8F2D002A9D5A = {
 						TestTargetID = 0F85FD2518DC8F2D002A9D5A;
 					};
@@ -272,6 +280,7 @@
 				0F5B9787191695A700C39256 /* CAR_LocationController.m in Sources */,
 				0F85FD3A18DC8F2D002A9D5A /* CAR_AppDelegate.m in Sources */,
 				0F5B978A191695C100C39256 /* CAR_LocationModel.m in Sources */,
+				0F7DD1D0191BF862002E7CA3 /* CAR_MapAnnotation.m in Sources */,
 				0F85FD4318DC8F2D002A9D5A /* CAR_ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,10 +416,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Where Car?/Where Car?-Prefix.pch";
 				INFOPLIST_FILE = "Where Car?/Where Car?-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -420,10 +432,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Where Car?/Where Car?-Prefix.pch";
 				INFOPLIST_FILE = "Where Car?/Where Car?-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
