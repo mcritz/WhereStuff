@@ -27,6 +27,5 @@ typedef NS_ENUM(NSUInteger, BeaconStatus) {
 
 // Access model through the controller
 @property (strong, nonatomic)CAR_LocationModel *beaconLocation;
-//- (void)updateBeaconLocation;
 
 @end

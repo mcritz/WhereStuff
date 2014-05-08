@@ -113,21 +113,17 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
-	NSLog(@"CLLM didDetermineState");
 	if ([region isKindOfClass:[CLBeaconRegion class]]) {
 		[self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
 	}
 }
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+	// TODO: Graceful error handling
 	NSLog(@"monitoring failed!");
 }
 
 #pragma mark - Utility methods
-
-//- (void)updateBeaconLocation {
-//	[self.beaconLocation setLocation:self.locationManager.location];
-//}
 
 // Attempt to conserve energy
 - (void)attemptToConserveBattery:(BOOL)conserve {
