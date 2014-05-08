@@ -8,9 +8,10 @@
 
 #import "CAR_ViewController.h"
 #import "CAR_LocationController.h"
+#import "CAR_MapAnnotation.h"
 
 @interface CAR_ViewController ()
-@property (nonatomic, strong)MKPointAnnotation *carAnnotation;
+@property (nonatomic, strong)CAR_MapAnnotation *carAnnotation;
 @property (nonatomic)CAR_LocationController *locationController;
 @end
 
@@ -38,33 +39,30 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	NSLog(@"event");
 	if ([keyPath isEqualToString:@"beaconLocation"]) {
 		[self updateLastSeen];
 	} else if ([keyPath isEqualToString:@"beaconStatus"]) {
 		[self updateLastSeen];
 		NSString *logMessage = [[NSString alloc] initWithFormat:@"beaconStatus: %lu", self.locationController.beaconStatus];
-		NSLog(@"%@", logMessage);
+//		NSLog(@"%@", logMessage);
 		[self.statusLabel setText:logMessage];
-	} else if (@"deviceLocation") {
-		NSLog(@"beaconState: %lu\n", self.locationController.beaconStatus);
+//	} else if (@"deviceLocation") {
 	}
 }
 
-- (MKPointAnnotation *)carAnnotation {
+- (CAR_MapAnnotation *)carAnnotation {
 	if (!_carAnnotation) {
-		_carAnnotation = [[MKPointAnnotation alloc] init];
+		_carAnnotation = [[CAR_MapAnnotation alloc] init];
 	}
-	if (CLLocationCoordinate2DIsValid(_locationController.beaconLocation.location.coordinate)) {
-		[_carAnnotation setCoordinate:_locationController.beaconLocation.location.coordinate];
+	if (CLLocationCoordinate2DIsValid(_locationController.deviceLocation.coordinate)) {
+		[_carAnnotation setCoordinate:_locationController.deviceLocation.coordinate];
 		[_carAnnotation setTitle:@"Your Car, Dude!"];
-		[_carAnnotation setSubtitle:@"There it is!"];
+		[_carAnnotation setSubTitle:@"There it is!"];
 	}
 	return _carAnnotation;
 }
 
 - (void)updateLastSeen {
-	NSLog(@"updateLastSeen");
 	[self.statusLabel setText:@"updateLastSeen"];
 	[self updateMap:NO];
 }
@@ -73,7 +71,6 @@
 	NSString *logMessage = @"logPressed";
 	[self updateLastSeen];
 	[self.statusLabel setText:logMessage];
-	NSLog(@"%@", _locationController.beaconLocation.location);
 }
 
 - (IBAction)clearButtonPressed:(id)sender {
@@ -82,24 +79,21 @@
 
 - (void)updateMap:(BOOL)initial {
 	if (initial) {
+		[self.bigMap setCenterCoordinate:self.locationController.deviceLocation.coordinate];
 		[self.bigMap setRegion:MKCoordinateRegionMake(self.locationController.deviceLocation.coordinate, MKCoordinateSpanMake(.1, .1))
 					  animated:YES];
 	} else {
-		[self.bigMap setCenterCoordinate:self.locationController.deviceLocation.coordinate];
-		for (int i = 0; i < self.bigMap.annotations.count; i++) {
-			MKPointAnnotation *annotation = [self.bigMap.annotations objectAtIndex:i];
-			NSLog(@"annotation: %f", annotation.coordinate.latitude);
-			[self.bigMap removeAnnotation:annotation];
-			annotation = nil;
+		if (![self.bigMap.annotations containsObject:self.carAnnotation]) {
+			[self.bigMap addAnnotation:self.carAnnotation];
 		}
-		[self.bigMap addAnnotation:self.carAnnotation];
+		[self.carAnnotation setCoordinate:self.locationController.deviceLocation.coordinate];
 	}
 }
 
 - (void)clearAllMarkers {
 	[self.bigMap removeAnnotations:self.bigMap.annotations];
 	for (int i = 0; i < self.bigMap.annotations.count; i++) {
-		MKPointAnnotation *annotation = [self.bigMap.annotations objectAtIndex:i];
+		MKAnnotationView *annotation = [self.bigMap.annotations objectAtIndex:i];
 		if (annotation) {
 			annotation = nil;
 		}
