@@ -93,6 +93,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F7DD1D4191D2934002E7CA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F7DD1CE191BF862002E7CA3 /* CAR_MapAnnotation.h */,
+				0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */,
+				0F5B9788191695C100C39256 /* CAR_LocationModel.h */,
+				0F5B9789191695C100C39256 /* CAR_LocationModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0F7DD1D5191D293F002E7CA3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F85FD3818DC8F2D002A9D5A /* CAR_AppDelegate.h */,
+				0F85FD3918DC8F2D002A9D5A /* CAR_AppDelegate.m */,
+				0F5B9785191695A700C39256 /* CAR_LocationController.h */,
+				0F5B9786191695A700C39256 /* CAR_LocationController.m */,
+				0F85FD4118DC8F2D002A9D5A /* CAR_ViewController.h */,
+				0F85FD4218DC8F2D002A9D5A /* CAR_ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0F7DD1D6191D294A002E7CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0F85FD4418DC8F2D002A9D5A /* Images.xcassets */,
+				0F85FD3B18DC8F2D002A9D5A /* Main_iPhone.storyboard */,
+				0F85FD3E18DC8F2D002A9D5A /* Main_iPad.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		0F85FD1D18DC8F2D002A9D5A = {
 			isa = PBXGroup;
 			children = (
@@ -127,19 +161,9 @@
 		0F85FD2F18DC8F2D002A9D5A /* Where Car? */ = {
 			isa = PBXGroup;
 			children = (
-				0F7DD1CE191BF862002E7CA3 /* CAR_MapAnnotation.h */,
-				0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */,
-				0F5B9788191695C100C39256 /* CAR_LocationModel.h */,
-				0F5B9789191695C100C39256 /* CAR_LocationModel.m */,
-				0F5B9785191695A700C39256 /* CAR_LocationController.h */,
-				0F5B9786191695A700C39256 /* CAR_LocationController.m */,
-				0F85FD3818DC8F2D002A9D5A /* CAR_AppDelegate.h */,
-				0F85FD3918DC8F2D002A9D5A /* CAR_AppDelegate.m */,
-				0F85FD3B18DC8F2D002A9D5A /* Main_iPhone.storyboard */,
-				0F85FD3E18DC8F2D002A9D5A /* Main_iPad.storyboard */,
-				0F85FD4118DC8F2D002A9D5A /* CAR_ViewController.h */,
-				0F85FD4218DC8F2D002A9D5A /* CAR_ViewController.m */,
-				0F85FD4418DC8F2D002A9D5A /* Images.xcassets */,
+				0F7DD1D4191D2934002E7CA3 /* Model */,
+				0F7DD1D6191D294A002E7CA3 /* View */,
+				0F7DD1D5191D293F002E7CA3 /* Controller */,
 				0F85FD3018DC8F2D002A9D5A /* Supporting Files */,
 			);
 			path = "Where Car?";

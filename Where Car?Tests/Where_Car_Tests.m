@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "CAR_LocationController.h"
 
 @interface Where_Car_Tests : XCTestCase
 
@@ -26,9 +27,11 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testLocationController
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+	CAR_LocationController *testLocationController = [[CAR_LocationController alloc] init];
+	XCTAssert([testLocationController.locationManager isKindOfClass:[CLLocationManager class]], @"LocationController should be valid");
+	XCTAssert(testLocationController.beaconStatus >= 0, @"beaconStatus should be valid");
 }
 
 @end
