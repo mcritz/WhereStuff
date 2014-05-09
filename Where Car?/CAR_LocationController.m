@@ -55,6 +55,12 @@
 	[self.locationManager startMonitoringForRegion:self.beaconRegion];
 }
 
+- (CAR_LocationModel *)beaconLocation {
+	if (!_beaconLocation) {
+		_beaconLocation = [[CAR_LocationModel alloc] init];
+	}
+	return _beaconLocation;
+}
 
 - (void)checkCLAuthorization {
 	if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
@@ -71,14 +77,6 @@
 		_deviceLocation = self.locationManager.location;
 	}
 	return _deviceLocation;
-}
-
-- (CAR_LocationModel *)beaconLocation {
-	if (!_beaconLocation) {
-		_beaconLocation = [[CAR_LocationModel alloc] init];
-		_beaconLocation.location = self.locationManager.location;
-	}
-	return _beaconLocation;
 }
 
 #pragma mark - CL Protocol Methods
@@ -109,13 +107,21 @@
 		self.beaconStatus = kBeaconFar;
 		shouldConservePower = YES;
     }
+	[self updateLocationForBeacon:beaconToRange];
 	[self attemptToConserveBattery:shouldConservePower];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
+- (void)locationManager:(CLLocationManager *)manager
+	  didDetermineState:(CLRegionState)state
+			  forRegion:(CLRegion *)region {
 	if ([region isKindOfClass:[CLBeaconRegion class]]) {
 		[self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
 	}
+}
+
+- (void)updateLocationForBeacon:(CLBeacon *)beacon {
+	self.beaconLocation.lastSeen = [NSDate date];
+	[self.beaconLocation setLocation:self.locationManager.location];
 }
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {

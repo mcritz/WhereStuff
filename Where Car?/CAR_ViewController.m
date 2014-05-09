@@ -43,19 +43,25 @@
 		[self updateLastSeen];
 	} else if ([keyPath isEqualToString:@"beaconStatus"]) {
 		[self updateLastSeen];
-		NSString *logMessage = [[NSString alloc] initWithFormat:@"beaconStatus: %lu", self.locationController.beaconStatus];
-//		NSLog(@"%@", logMessage);
-		[self.statusLabel setText:logMessage];
-//	} else if (@"deviceLocation") {
+		if (self.locationController.beaconStatus != kBeaconUnknown) {
+			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+			[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+			[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+			NSString *logMessage = NSLocalizedString(@"No car for you", @"Shown to user when there are no tracked objects displayed on map");
+			if (self.locationController.beaconLocation.lastSeen) {
+				logMessage = NSLocalizedString(@"Last seen: ", @"Shown to user to indicate the last time an object was tracked. ex: `Last seen: 5/18/2014 8:30AM`");
+				logMessage = [logMessage stringByAppendingString:[dateFormatter stringFromDate:self.locationController.beaconLocation.lastSeen]];
+			}
+			[self.statusLabel setText:logMessage];
+		}
 	}
 }
 
 - (CAR_MapAnnotation *)carAnnotation {
-	if (!_carAnnotation) {
-		_carAnnotation = [[CAR_MapAnnotation alloc] init];
-	}
-	if (CLLocationCoordinate2DIsValid(_locationController.deviceLocation.coordinate)) {
-		[_carAnnotation setCoordinate:_locationController.deviceLocation.coordinate];
+	_carAnnotation = nil;
+	_carAnnotation = [[CAR_MapAnnotation alloc] init];
+	if (CLLocationCoordinate2DIsValid(_locationController.beaconLocation.location.coordinate)) {
+		[_carAnnotation setCoordinate:_locationController.beaconLocation.location.coordinate];
 		[_carAnnotation setTitle:@"Your Car, Dude!"];
 		[_carAnnotation setSubTitle:@"There it is!"];
 	}
@@ -83,10 +89,8 @@
 		[self.bigMap setRegion:MKCoordinateRegionMake(self.locationController.deviceLocation.coordinate, MKCoordinateSpanMake(.1, .1))
 					  animated:YES];
 	} else {
-		if (![self.bigMap.annotations containsObject:self.carAnnotation]) {
-			[self.bigMap addAnnotation:self.carAnnotation];
-		}
-		[self.carAnnotation setCoordinate:self.locationController.deviceLocation.coordinate];
+		[self.bigMap removeAnnotations:self.bigMap.annotations];
+		[self.bigMap addAnnotation:self.carAnnotation];
 	}
 }
 
