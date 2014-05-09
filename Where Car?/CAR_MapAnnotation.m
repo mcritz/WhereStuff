@@ -27,10 +27,4 @@
 	return _annotationView;
 }
 
-- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate {
-	if (CLLocationCoordinate2DIsValid(newCoordinate)) {
-		coordinate = newCoordinate;
-	}
-}
-
 @end

@@ -15,6 +15,4 @@
 @property (nonatomic, copy)NSString *subTitle;
 @property (nonatomic)CLLocationCoordinate2D coordinate;
 
-- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate;
-
 @end
