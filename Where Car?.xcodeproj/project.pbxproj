@@ -10,6 +10,7 @@
 		0F5B9787191695A700C39256 /* CAR_LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9786191695A700C39256 /* CAR_LocationController.m */; };
 		0F5B978A191695C100C39256 /* CAR_LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9789191695C100C39256 /* CAR_LocationModel.m */; };
 		0F7DD1D0191BF862002E7CA3 /* CAR_MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */; };
+		0F7DD1D9191D2FF4002E7CA3 /* CAR_MapSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7DD1D8191D2FF4002E7CA3 /* CAR_MapSettings.m */; };
 		0F85FD2A18DC8F2D002A9D5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2918DC8F2D002A9D5A /* Foundation.framework */; };
 		0F85FD2C18DC8F2D002A9D5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2B18DC8F2D002A9D5A /* CoreGraphics.framework */; };
 		0F85FD2E18DC8F2D002A9D5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F85FD2D18DC8F2D002A9D5A /* UIKit.framework */; };
@@ -45,6 +46,8 @@
 		0F5B9789191695C100C39256 /* CAR_LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_LocationModel.m; sourceTree = "<group>"; };
 		0F7DD1CE191BF862002E7CA3 /* CAR_MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_MapAnnotation.h; sourceTree = "<group>"; };
 		0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_MapAnnotation.m; sourceTree = "<group>"; };
+		0F7DD1D7191D2FF4002E7CA3 /* CAR_MapSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAR_MapSettings.h; sourceTree = "<group>"; };
+		0F7DD1D8191D2FF4002E7CA3 /* CAR_MapSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAR_MapSettings.m; sourceTree = "<group>"; };
 		0F85FD2618DC8F2D002A9D5A /* Where Car?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Where Car?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F85FD2918DC8F2D002A9D5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0F85FD2B18DC8F2D002A9D5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,6 +103,8 @@
 				0F7DD1CF191BF862002E7CA3 /* CAR_MapAnnotation.m */,
 				0F5B9788191695C100C39256 /* CAR_LocationModel.h */,
 				0F5B9789191695C100C39256 /* CAR_LocationModel.m */,
+				0F7DD1D7191D2FF4002E7CA3 /* CAR_MapSettings.h */,
+				0F7DD1D8191D2FF4002E7CA3 /* CAR_MapSettings.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -162,8 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				0F7DD1D4191D2934002E7CA3 /* Model */,
-				0F7DD1D6191D294A002E7CA3 /* View */,
 				0F7DD1D5191D293F002E7CA3 /* Controller */,
+				0F7DD1D6191D294A002E7CA3 /* View */,
 				0F85FD3018DC8F2D002A9D5A /* Supporting Files */,
 			);
 			path = "Where Car?";
@@ -306,6 +311,7 @@
 				0F5B978A191695C100C39256 /* CAR_LocationModel.m in Sources */,
 				0F7DD1D0191BF862002E7CA3 /* CAR_MapAnnotation.m in Sources */,
 				0F85FD4318DC8F2D002A9D5A /* CAR_ViewController.m in Sources */,
+				0F7DD1D9191D2FF4002E7CA3 /* CAR_MapSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

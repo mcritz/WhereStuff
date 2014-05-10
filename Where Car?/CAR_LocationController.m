@@ -121,7 +121,13 @@
 
 - (void)updateLocationForBeacon:(CLBeacon *)beacon {
 	self.beaconLocation.lastSeen = [NSDate date];
-	[self.beaconLocation setLocation:self.locationManager.location];
+	
+	if (self.beaconStatus == kBeaconImmediate
+		|| self.beaconStatus == kBeaconNear) {
+		[self.beaconLocation setLocation:self.locationManager.location];
+	} else if (self.beaconStatus == kBeaconFar) {
+//		NSLog(@"kBeaconFar");
+	}
 }
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {

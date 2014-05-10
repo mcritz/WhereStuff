@@ -9,6 +9,7 @@
 #import "CAR_ViewController.h"
 #import "CAR_LocationController.h"
 #import "CAR_MapAnnotation.h"
+#import "CAR_MapSettings.h"
 
 @interface CAR_ViewController ()
 @property (nonatomic, strong)CAR_MapAnnotation *carAnnotation;
@@ -85,10 +86,10 @@
 
 - (void)updateMap:(BOOL)initial {
 	if (initial) {
-		[self.bigMap setCenterCoordinate:self.locationController.deviceLocation.coordinate];
-		[self.bigMap setRegion:MKCoordinateRegionMake(self.locationController.deviceLocation.coordinate, MKCoordinateSpanMake(.1, .1))
+		CAR_MapSettings *mapSettings = [[CAR_MapSettings alloc] init];
+		[self.bigMap setRegion:[mapSettings getRegionForLocation:self.locationController.locationManager.location]
 					  animated:YES];
-	} else {
+	} else if (!	[self.locationController.beaconLocation.lastSeen isEqual:[NSDate date]]) {
 		[self.bigMap removeAnnotations:self.bigMap.annotations];
 		[self.bigMap addAnnotation:self.carAnnotation];
 	}
