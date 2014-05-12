@@ -137,6 +137,20 @@
 
 #pragma mark - Utility methods
 
+// Decide whether to draw a map pin
+- (BOOL)shouldDrawPin {
+	if (self.beaconStatus == kBeaconImmediate
+		|| self.beaconStatus == kBeaconNear) {
+		return NO;
+	} else if (!self.beaconLocation.lastSeen) {
+		return NO;
+	} else if ([self.beaconLocation.lastSeen isEqual:[NSDate date]]) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
+
 // Attempt to conserve energy
 - (void)attemptToConserveBattery:(BOOL)conserve {
 	CLLocationAccuracy accuracy = conserve ? kCLLocationAccuracyKilometer : kCLLocationAccuracyBest;

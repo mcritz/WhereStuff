@@ -89,9 +89,14 @@
 		CAR_MapSettings *mapSettings = [[CAR_MapSettings alloc] init];
 		[self.bigMap setRegion:[mapSettings getRegionForLocation:self.locationController.locationManager.location]
 					  animated:YES];
-	} else if (!	[self.locationController.beaconLocation.lastSeen isEqual:[NSDate date]]) {
-		[self.bigMap removeAnnotations:self.bigMap.annotations];
-		[self.bigMap addAnnotation:self.carAnnotation];
+	} else if ([self.locationController shouldDrawPin]) {
+		if (self.bigMap.annotations.count > 1) {
+			return;
+		} else {
+			[self.bigMap addAnnotation:self.carAnnotation];
+		}
+	} else {
+		[self clearAllMarkers];
 	}
 }
 
