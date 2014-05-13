@@ -44,17 +44,6 @@
 		[self updateLastSeen];
 	} else if ([keyPath isEqualToString:@"beaconStatus"]) {
 		[self updateLastSeen];
-		if (self.locationController.beaconStatus != kBeaconUnknown) {
-			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-			[dateFormatter setDateStyle:NSDateFormatterShortStyle];
-			[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-			NSString *logMessage = NSLocalizedString(@"No car for you", @"Shown to user when there are no tracked objects displayed on map");
-			if (self.locationController.beaconLocation.lastSeen) {
-				logMessage = NSLocalizedString(@"Last seen: ", @"Shown to user to indicate the last time an object was tracked. ex: `Last seen: 5/18/2014 8:30AM`");
-				logMessage = [logMessage stringByAppendingString:[dateFormatter stringFromDate:self.locationController.beaconLocation.lastSeen]];
-			}
-			[self.statusLabel setText:logMessage];
-		}
 	}
 }
 
@@ -70,7 +59,22 @@
 }
 
 - (void)updateLastSeen {
-	[self.statusLabel setText:@"updateLastSeen"];
+	if (self.locationController.beaconStatus != kBeaconUnknown) {
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+		[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+		NSString *logMessage = NSLocalizedString(@"Beacon not found", @"Shown to user when there are no tracked objects displayed on map");
+		if (self.locationController.beaconLocation.lastSeen) {
+			if (self.locationController.beaconStatus == kBeaconImmediate
+				|| self.locationController.beaconStatus == kBeaconNear) {
+				logMessage = NSLocalizedString(@"Beacon nearby", @"Message to user that their tracked object is within about 3 meters");
+			} else {
+				logMessage = NSLocalizedString(@"Last seen: ", @"Shown to user to indicate the last time an object was tracked. ex: `Last seen: 5/18/2014 8:30AM`");
+				logMessage = [logMessage stringByAppendingString:[dateFormatter stringFromDate:self.locationController.beaconLocation.lastSeen]];
+			}
+		}
+		[self.statusLabel setText:logMessage];
+	}
 	[self updateMap:NO];
 }
 

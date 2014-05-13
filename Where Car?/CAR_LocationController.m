@@ -144,6 +144,8 @@
 		return NO;
 	} else if (!self.beaconLocation.lastSeen) {
 		return NO;
+	} else if (self.beaconStatus == kBeaconFar) {
+		return YES;
 	} else if ([self.beaconLocation.lastSeen isEqual:[NSDate date]]) {
 		return NO;
 	} else {
