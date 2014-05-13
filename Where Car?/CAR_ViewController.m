@@ -78,16 +78,6 @@
 	[self updateMap:NO];
 }
 
-- (IBAction)logButtonPressed:(id)sender {
-	NSString *logMessage = @"logPressed";
-	[self updateLastSeen];
-	[self.statusLabel setText:logMessage];
-}
-
-- (IBAction)clearButtonPressed:(id)sender {
-	[self clearAllMarkers];
-}
-
 - (void)updateMap:(BOOL)initial {
 	if (initial) {
 		CAR_MapSettings *mapSettings = [[CAR_MapSettings alloc] init];

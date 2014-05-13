@@ -20,8 +20,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpl-uf-SUD">
-                                <rect key="frame" x="0.0" y="455" width="320" height="36"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpl-uf-SUD">
+                                <rect key="frame" x="0.0" y="532" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.75" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -31,51 +31,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rQ-yv-4VE">
-                                <rect key="frame" x="20" y="518" width="124" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="0.84999999999999998" colorSpace="deviceWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="CaG-gu-03m"/>
-                                </constraints>
-                                <state key="normal" title="Log Something">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="e6Q-Vu-meO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biP-pO-ZU0">
-                                <rect key="frame" x="160" y="518" width="140" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="0.84999999999999998" colorSpace="deviceWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="PIR-KH-xic"/>
-                                </constraints>
-                                <state key="normal" title="Clear">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clearButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gjW-XW-H8U"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6rQ-yv-4VE" firstAttribute="top" secondItem="IYW-oo-5II" secondAttribute="bottom" constant="-50" id="1fJ-Nr-HnM"/>
                             <constraint firstAttribute="width" secondItem="cpl-uf-SUD" secondAttribute="width" id="8dw-GQ-WAp"/>
                             <constraint firstAttribute="centerY" secondItem="IYW-oo-5II" secondAttribute="centerY" id="BAT-Gt-xMP"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6rQ-yv-4VE" secondAttribute="bottom" constant="20" id="Bg2-bO-k3R"/>
-                            <constraint firstItem="6rQ-yv-4VE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="KO2-YH-fpf"/>
-                            <constraint firstItem="IYW-oo-5II" firstAttribute="trailing" secondItem="biP-pO-ZU0" secondAttribute="trailing" constant="20" id="La3-te-Mud"/>
-                            <constraint firstItem="IYW-oo-5II" firstAttribute="bottom" secondItem="biP-pO-ZU0" secondAttribute="bottom" constant="20" id="LcX-5R-tRT"/>
                             <constraint firstItem="cpl-uf-SUD" firstAttribute="leading" secondItem="IYW-oo-5II" secondAttribute="leading" id="MRZ-5n-8yg"/>
                             <constraint firstItem="IYW-oo-5II" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="XRO-Jl-3V7"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cpl-uf-SUD" secondAttribute="bottom" constant="77" id="Xes-TP-r6y"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cpl-uf-SUD" secondAttribute="bottom" id="Xes-TP-r6y"/>
                             <constraint firstItem="IYW-oo-5II" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="YFi-yF-3I2"/>
-                            <constraint firstAttribute="trailing" secondItem="6rQ-yv-4VE" secondAttribute="trailing" constant="176" id="ccx-EF-Ujv"/>
-                            <constraint firstItem="cpl-uf-SUD" firstAttribute="top" secondItem="IYW-oo-5II" secondAttribute="bottom" constant="-113" id="hT7-yQ-Btg"/>
-                            <constraint firstItem="6rQ-yv-4VE" firstAttribute="centerX" secondItem="IYW-oo-5II" secondAttribute="centerX" constant="-78" id="j3Y-p4-5Ek"/>
+                            <constraint firstItem="cpl-uf-SUD" firstAttribute="top" secondItem="IYW-oo-5II" secondAttribute="bottom" constant="-36" id="hT7-yQ-Btg"/>
                             <constraint firstAttribute="centerX" secondItem="IYW-oo-5II" secondAttribute="centerX" id="kwv-4K-Yw6"/>
                         </constraints>
                     </view>
