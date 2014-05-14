@@ -48,7 +48,7 @@
 	// TODO: not hardcoded beacon
 	// KST		8AEFB031-6C32-486F-825B-E26FA193487D
 	// Qualcom	E30F2707-DB66-46DF-A504-215C396990CA
-	NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"E30F2707-DB66-46DF-A504-215C396990CA"];
+	NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"8AEFB031-6C32-486F-825B-E26FA193487D"];
 	self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
 																major:1
 														   identifier:@"com.mapoftheunexplored.car"];
@@ -90,12 +90,19 @@
 
 -(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+	[self.beaconLocation save];
 }
 
--(void)locationManager:(CLLocationManager *)manager
+- (void)locationManager:(CLLocationManager *)manager
        didRangeBeacons:(NSArray *)beacons
               inRegion:(CLBeaconRegion *)region {
-    CLBeacon *beaconToRange = [beacons lastObject];
+	CLBeacon *beaconToRange = [beacons lastObject];
+	for (CLBeacon *thisBeacon in beacons) {
+		if ([thisBeacon.major  isEqual: @(1)]
+			&& [thisBeacon.minor isEqual: @(4)]) {
+			beaconToRange = thisBeacon;
+		}
+	}
 	BOOL shouldConservePower = NO;
     if (beaconToRange.proximity == CLProximityUnknown) {
 		self.beaconStatus = kBeaconUnknown;
@@ -106,6 +113,7 @@
     } else if (beaconToRange.proximity == CLProximityFar) {
 		self.beaconStatus = kBeaconFar;
 		shouldConservePower = YES;
+		[self.beaconLocation save];
     }
 	[self updateLocationForBeacon:beaconToRange];
 	[self attemptToConserveBattery:shouldConservePower];
@@ -117,7 +125,11 @@
 	if ([region isKindOfClass:[CLBeaconRegion class]]) {
 		[self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
 	}
+	if (state == CLRegionStateOutside) {
+		[self attemptToConserveBattery:YES];
+	}
 }
+
 
 - (void)updateLocationForBeacon:(CLBeacon *)beacon {
 	self.beaconLocation.lastSeen = [NSDate date];
@@ -133,6 +145,7 @@
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
 	// TODO: Graceful error handling
 	NSLog(@"monitoring failed!");
+	[self attemptToConserveBattery:YES];
 }
 
 #pragma mark - Utility methods

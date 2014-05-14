@@ -18,4 +18,6 @@
 @property (nonatomic)CLLocation *location;
 @property (nonatomic)NSDate *lastSeen;
 
+- (void)save;
+
 @end

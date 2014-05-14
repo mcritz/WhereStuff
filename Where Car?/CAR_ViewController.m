@@ -12,7 +12,7 @@
 #import "CAR_MapSettings.h"
 
 @interface CAR_ViewController ()
-@property (nonatomic, strong)CAR_MapAnnotation *carAnnotation;
+@property (nonatomic, strong)CAR_MapAnnotation *mapAnnotation;
 @property (nonatomic)CAR_LocationController *locationController;
 @end
 
@@ -47,15 +47,15 @@
 	}
 }
 
-- (CAR_MapAnnotation *)carAnnotation {
-	_carAnnotation = nil;
-	_carAnnotation = [[CAR_MapAnnotation alloc] init];
+- (CAR_MapAnnotation *)mapAnnotation {
+	_mapAnnotation = nil;
+	_mapAnnotation = [[CAR_MapAnnotation alloc] init];
 	if (CLLocationCoordinate2DIsValid(_locationController.beaconLocation.location.coordinate)) {
-		[_carAnnotation setCoordinate:_locationController.beaconLocation.location.coordinate];
-		[_carAnnotation setTitle:@"Your Car, Dude!"];
-		[_carAnnotation setSubTitle:@"There it is!"];
+		[_mapAnnotation setCoordinate:_locationController.beaconLocation.location.coordinate];
+		[_mapAnnotation setTitle:@"Your Car, Dude!"];
+		[_mapAnnotation setSubtitle:@"There it is!"];
 	}
-	return _carAnnotation;
+	return _mapAnnotation;
 }
 
 - (void)updateLastSeen {
@@ -73,6 +73,7 @@
 				logMessage = [logMessage stringByAppendingString:[dateFormatter stringFromDate:self.locationController.beaconLocation.lastSeen]];
 			}
 		}
+		self.locationController.beaconLocation.description = logMessage;
 		[self.statusLabel setText:logMessage];
 	}
 	[self updateMap:NO];
@@ -83,11 +84,13 @@
 		CAR_MapSettings *mapSettings = [[CAR_MapSettings alloc] init];
 		[self.bigMap setRegion:[mapSettings getRegionForLocation:self.locationController.locationManager.location]
 					  animated:YES];
-	} else if ([self.locationController shouldDrawPin]) {
-		if (self.bigMap.annotations.count > 1) {
+		[self.statusLabel setText:self.locationController.beaconLocation.description];
+	}
+	if ([self.locationController shouldDrawPin]) {
+		if (self.bigMap.annotations.count > 2) {
 			return;
 		} else {
-			[self.bigMap addAnnotation:self.carAnnotation];
+			[self.bigMap addAnnotation:self.mapAnnotation];
 		}
 	} else {
 		[self clearAllMarkers];

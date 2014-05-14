@@ -12,7 +12,7 @@
 @interface CAR_MapAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, copy)NSString *title;
-@property (nonatomic, copy)NSString *subTitle;
+@property (nonatomic, copy)NSString *subtitle;
 @property (nonatomic)CLLocationCoordinate2D coordinate;
 
 @end
